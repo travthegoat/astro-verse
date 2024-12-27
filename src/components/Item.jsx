@@ -19,8 +19,8 @@ const Item = () => {
                 >
                     Demon Slayer: Inosuke Hashibira
                 </h1>
-                <h2 className="text-gray-500 mt-2">Base Set</h2>
-                <h2 className="text-gray-500">Rare</h2>
+                <h2 className="text-gray-500 mt-2">Pretty Rare</h2>
+                <h2 className="text-gray-500">G.O.A.T</h2>
 
                 <h1 className="text-2xl font-bold mt-2">$9.99</h1>
 

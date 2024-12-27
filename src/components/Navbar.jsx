@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ notHome }) => {
     const [toggle, setToggle] = useState(true);
     const [scroll, setScroll] = useState(0);
 
     useEffect(() => {
-        
-        window.addEventListener('scroll', () => setScroll(window.scrollY));
+        window.addEventListener("scroll", () => setScroll(window.scrollY));
         console.log(scroll);
 
         return () => {
-            window.removeEventListener('scroll', setScroll(window.scrollY));
-        }
-
+            window.removeEventListener("scroll", setScroll(window.scrollY));
+        };
     }, [window.scrollY]);
 
     return (
@@ -34,39 +33,45 @@ const Navbar = ({ notHome }) => {
                         className={`hidden md:flex flex-row items-center gap-10`}
                     >
                         <li>
-                            <a
-                                href="#"
+                            <Link
+                                to="/"
                                 className={`text-xl text-gray-300 hover:text-white`}
                             >
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="#"
+                            <Link
+                                to="/shop"
                                 className={`text-xl text-gray-300 hover:text-white`}
                             >
                                 Shop
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="#"
+                            <Link
+                                to="/contact-us"
                                 className={`text-xl text-gray-300 hover:text-white`}
                             >
                                 Contact
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
 
                 <div className="hidden md:flex flex-row items-center gap-10">
-                    <button className="w-28 h-10 bg-white text-black font-semibold text-lg rounded-lg hover:bg-red-900 duration-300">
+                    <Link
+                        to="/auth/login"
+                        className="w-28 h-10 bg-white text-black font-semibold text-lg rounded-lg hover:bg-red-900 duration-300 flex justify-center items-center cursor-pointer"
+                    >
                         Sign In
-                    </button>
-                    <ShoppingCartOutlinedIcon
-                        style={{ color: "white", fontSize: 40 }}
-                    />
+                    </Link>
+                    <Link to="/cart">
+                        <ShoppingCartOutlinedIcon
+                            style={{ color: "white", fontSize: 40 }}
+                            className="hover:text-gray-500 duration-300"
+                        />
+                    </Link>
                 </div>
 
                 <button
@@ -92,24 +97,15 @@ const Navbar = ({ notHome }) => {
                     toggle ? "" : "-translate-x-[700px]"
                 } md:hidden duration-500 bg-[#1A1A1D]`}
             >
-                <a
-                    href="#"
-                    className="block px-4 py-2 text-white "
-                >
+                <Link to="/" className="block px-4 py-2 text-white ">
                     Home
-                </a>
-                <a
-                    href="#"
-                    className="block px-4 py-2 text-white "
-                >
+                </Link>
+                <Link to="/shop" className="block px-4 py-2 text-white ">
                     Shop
-                </a>
-                <a
-                    href="#"
-                    className="block px-4 py-2 text-white "
-                >
+                </Link>
+                <Link to="/contact-us" className="block px-4 py-2 text-white ">
                     Contact
-                </a>
+                </Link>
             </div>
         </nav>
     );
