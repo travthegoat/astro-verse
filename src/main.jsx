@@ -10,6 +10,7 @@ import ShopPage from "./pages/ShopPage";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ContactPage from "./pages/ContactPage";
+import CartPage from "./pages/cartPage";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminLoginPage />
+    },
+    {
+        path: '/cart',
+        element: <CartPage />
     }
 ]);
 

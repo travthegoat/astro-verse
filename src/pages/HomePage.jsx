@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Item from "../components/Item";
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const HomePage = () => {
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     Cookies.remove('uid');
+    // }, [])
 
     return (
         <>

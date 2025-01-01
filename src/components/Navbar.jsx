@@ -3,6 +3,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AccountCircle } from "@mui/icons-material";
 
 const Navbar = ({ notHome }) => {
     const [toggle, setToggle] = useState(true);
@@ -10,7 +13,6 @@ const Navbar = ({ notHome }) => {
 
     useEffect(() => {
         window.addEventListener("scroll", () => setScroll(window.scrollY));
-        console.log(scroll);
 
         return () => {
             window.removeEventListener("scroll", setScroll(window.scrollY));
@@ -22,7 +24,7 @@ const Navbar = ({ notHome }) => {
             className={
                 scroll > 0 || notHome
                     ? "bg-[#1A1A1D] w-full h-[8%] md:h-20 duration-500 fixed top-0 left-0 z-50 shadow-md"
-                    : "bg-transparent w-full h-[8%] md:h-20 duration-500"
+                    : "bg-transparent w-full h-[8%] md:h-20 duration-500 fixed top-0 left-0 z-50"
             }
         >
             <div className="w-full h-full bg-transparent flex flex-row pl-2 pr-4 justify-between items-center md:pl-10 md:pr-14">
@@ -60,12 +62,17 @@ const Navbar = ({ notHome }) => {
                 </div>
 
                 <div className="hidden md:flex flex-row items-center gap-10">
-                    <Link
-                        to="/auth/login"
-                        className="w-28 h-10 bg-white text-black font-semibold text-lg rounded-lg hover:bg-red-900 duration-300 flex justify-center items-center cursor-pointer"
-                    >
-                        Sign In
-                    </Link>
+                    {Cookies.get("uid") === undefined ? (
+                        <Link
+                            to="/auth/login"
+                            className="w-28 h-10 bg-white text-black font-semibold text-lg rounded-lg hover:bg-red-900 duration-300 flex justify-center items-center cursor-pointer"
+                        >
+                            Sign In
+                        </Link>
+                    ) : (
+                        <AccountCircle style={{ color: 'white', fontSize: 40 }}/>
+                    )}
+
                     <Link to="/cart">
                         <ShoppingCartOutlinedIcon
                             style={{ color: "white", fontSize: 40 }}
